@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { DarkModeContext } from '../../context/DarkModeProvider'
 import {
   getAllCountries,
   getCountriesByRegion,
@@ -8,7 +9,8 @@ import { Country } from "../../models";
 import loading from "../../assets/img/loading.gif";
 import styles from "./countriesList.module.scss";
 
-function CountriesList({ darkMode }: { darkMode: boolean }) {
+function CountriesList() {
+  const { isDarkMode } = useContext(DarkModeContext)
   const [countriesData, setCountriesData] = useState([]);
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,13 +53,12 @@ function CountriesList({ darkMode }: { darkMode: boolean }) {
   return (
     <>
       <div
-        className={`${styles.countriesListContainer} ${darkMode && styles.darkModeTheme
+        className={`${styles.countriesListContainer} ${isDarkMode && styles.darkModeTheme
           }`}
       >
         <CardListToolsBar
           handleSearchFilter={handleOnSearchFilter}
           handleSelectFilter={handleOnRegionFilter}
-          darkMode={darkMode}
         />
         {isLoading ? (
           <img className={styles.loadingGif} src={loading} alt="loadingGif" />
@@ -69,7 +70,6 @@ function CountriesList({ darkMode }: { darkMode: boolean }) {
                 img={country?.flag}
                 title={country?.name}
                 descriptionItems={country.getDescriptionAttributes()}
-                darkMode={darkMode}
               />
             ))}
           </CardList>

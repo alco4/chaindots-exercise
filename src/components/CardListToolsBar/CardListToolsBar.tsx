@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import Select from "react-select";
+import { DarkModeContext } from '../../context/DarkModeProvider';
 import search from "../../assets/img/search.png";
 import styles from "./cardListToolsBar.module.scss";
 
@@ -13,17 +15,17 @@ const options = [
 interface CardListToolsBarType {
   handleSearchFilter: any;
   handleSelectFilter: any;
-  darkMode: boolean;
 }
 const CardListToolsBar: React.FC<CardListToolsBarType> = ({
   handleSearchFilter,
   handleSelectFilter,
-  darkMode,
 }) => {
+  const { isDarkMode } = useContext(DarkModeContext)
+
   const dropdownCustomStyle = {
     control: (base: any, state: any) => ({
       ...base,
-      backgroundColor: darkMode ? "#2B3945" : "#FFFFFF",
+      backgroundColor: isDarkMode ? "#2B3945" : "#FFFFFF",
       color: "#FFFFFF !important",
       border: state.isFocused ? 0 : 0,
       borderRadius: "3px",
@@ -35,8 +37,8 @@ const CardListToolsBar: React.FC<CardListToolsBarType> = ({
     }),
     option: (provided: any, state: any) => ({
       ...provided,
-      background: darkMode ? "#2B3945" : "#FFFFFF",
-      color: darkMode ? "#FFFFFF" : "#2B3945",
+      background: isDarkMode ? "#2B3945" : "#FFFFFF",
+      color: isDarkMode ? "#FFFFFF" : "#2B3945",
       border: state.isSelected ? "1px solid lightBlue" : "none",
       "&:hover": {
         backgroundColor: state.isSelected ? "lightBlue" : "rgb(222, 235, 255)",
@@ -46,7 +48,7 @@ const CardListToolsBar: React.FC<CardListToolsBarType> = ({
 
   return (
     <div
-      className={`${styles.cardListToolsBar} ${darkMode && styles.darkModeTheme
+      className={`${styles.cardListToolsBar} ${isDarkMode && styles.darkModeTheme
         }`}
     >
       <div className={styles.searchBox}>
@@ -70,7 +72,7 @@ const CardListToolsBar: React.FC<CardListToolsBarType> = ({
             borderRadius: "3px",
             colors: {
               ...theme.colors,
-              neutral80: darkMode ? "#FFFFFF" : "black",
+              neutral80: isDarkMode ? "#FFFFFF" : "black",
             },
           })}
         />

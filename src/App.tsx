@@ -1,22 +1,23 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
+import { DarkModeContext } from './context/DarkModeProvider'
 import { CountriesList, CountryDetail } from "./pages";
 import { CountriesHeader } from "./components";
 import styles from "./app.module.scss";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const handleToggleDarkMode = () => setDarkMode(!darkMode);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext)
+
+  const handleToggleDarkMode = () => setIsDarkMode(!isDarkMode);
   return (
     <div
-      className={`${styles.mainContainer} ${darkMode && styles.darkModeTheme}`}
+      className={`${styles.mainContainer} ${isDarkMode && styles.darkModeTheme}`}
     >
       <CountriesHeader
         handleToggleDarkMode={handleToggleDarkMode}
-        darkMode={darkMode}
       />
       <Routes>
-        <Route path="/*" element={<CountriesList darkMode={darkMode} />} />
+        <Route path="/*" element={<CountriesList />} />
         <Route
           path="/country/:countryName"
           element={<CountryDetail />}
