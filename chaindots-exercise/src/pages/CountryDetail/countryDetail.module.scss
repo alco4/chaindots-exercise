@@ -1,0 +1,103 @@
+.cardDetail {
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.backIcon {
+  width: 14px;
+  margin-right: 4px;
+}
+
+.backButtonContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .backButtonContainer {
+    justify-content: center;
+  }
+}
+
+.backButton {
+  padding: 10px;
+  z-index: 3;
+  width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 4px;
+  border: 0;
+  margin-bottom: 20px;
+  &:hover {
+    cursor: pointer;
+    scale: 1.03;
+  }
+}
+.cardDetailImage {
+  width: 400px;
+  height: auto;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .cardDetail {
+    width: 100%;
+  }
+  .cardDetailImage {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardDetail {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cardDetailImage {
+    width: 150px;
+  }
+}
+
+.cardDetailInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-left: 20px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  color: black;
+  font-weight: 800;
+  margin: 8px 10px;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.cardItemLabel {
+  font-weight: 700;
+  margin-right: 4px !important;
+}
+
+.loadingGif {
+  width: 300px;
+  margin: auto;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: red;
+}

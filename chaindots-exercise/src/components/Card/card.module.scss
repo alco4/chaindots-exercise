@@ -1,0 +1,47 @@
+@import "../../variables.scss";
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: #f9f9f9;
+  padding-bottom: 40px;
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.darkModeTheme {
+  background: $background-color-dark-secondary;
+  color: $text-color-primary-dark;
+  .cardTitle {
+    color: $text-color-primary-dark;
+  }
+}
+
+.cardImage {
+  width: 100%;
+}
+
+.cardTitle {
+  font-size: 14px;
+  color: black;
+  font-weight: 800;
+  margin: 8px 10px;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.cardItemLabel {
+  font-weight: 700;
+  margin-right: 4px !important;
+}

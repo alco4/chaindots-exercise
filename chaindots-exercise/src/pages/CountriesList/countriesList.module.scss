@@ -1,0 +1,23 @@
+.countriesListContainer {
+  padding: 50px;
+}
+
+.darkModeTheme {
+  background-color: #202c37;
+}
+
+.loadingGif {
+  display: flex;
+  width: 300px;
+  margin: auto;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: red;
+}
