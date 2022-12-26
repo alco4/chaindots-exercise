@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { encodeURI } from "../../utils/utils";
 import styles from "./card.module.scss";
 
 interface CardType {
@@ -10,7 +11,7 @@ interface CardType {
 const Card: React.FC<CardType> = ({ img, title, descriptionItems, darkMode }) => {
   return (
     <Link
-      to={`/country/${title}`}
+      to={`/country/${encodeURI(title)}`}
       style={{ textDecoration: "none !important", color: "black" }}
     >
       <div className={`${styles.card} ${darkMode && styles.darkModeTheme}`}>
