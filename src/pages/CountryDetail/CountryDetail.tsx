@@ -19,9 +19,9 @@ function CountryDetail() {
       try {
         const [countryData] = await getCountryByName(countryName);
         setCountry(Country.fromJson(countryData));
-        setIsLoading(false);
       } catch (error: any) {
         setError(error.response.data.message);
+      } finally {
         setIsLoading(false);
       }
     }

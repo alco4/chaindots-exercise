@@ -23,9 +23,9 @@ function CountriesList() {
         const countries = await getAllCountries();
         setCountriesData(countries.map((country: any) => Country.fromJson(country)));
         setCountries(countries.map((country: any) => Country.fromJson(country)));
-        setIsLoading(false);
       } catch (error: any) {
         setError(error?.response?.data?.message);
+      } finally {
         setIsLoading(false);
       }
     }
@@ -41,9 +41,16 @@ function CountriesList() {
   };
 
   const handleOnRegionFilter = async (region: { value: string }) => {
-    const countries = await getCountriesByRegion(region?.value);
-    setCountriesData(countries.map((country: any) => Country.fromJson(country)));
-    setCountries(countries.map((country: any) => Country.fromJson(country)));
+    setIsLoading(true);
+    try {
+      const countries = await getCountriesByRegion(region?.value);
+      setCountriesData(countries.map((country: any) => Country.fromJson(country)));
+      setCountries(countries.map((country: any) => Country.fromJson(country)));
+    } catch (error: any) {
+      setError(error?.response?.data?.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (error) {
